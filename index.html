@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sign Up</title>
+    <link rel="stylesheet" href="stylelogin.css">
+    
+</head>
+<body>
+    <div class="container">
+        <div id="loginSection">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" id="showSignup">Sign Up</a></p>
+        </div>
+
+        <div id="signupSection" style="display: none;">
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+                <label for="newUsername">Username:</label>
+                <input type="text" id="newUsername" required>
+                <label for="email :">Email:</label>
+                <input type="text:" id="email" required>
+                <label for="newPassword">Password:</label>
+                
+                <input type="password" id="newPassword" required>
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="#" id="showLogin">Login</a></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Simplified login validation
+            if (username && password) {
+                // Redirect to home.html after successful login
+                window.location.href = 'home.html';
+            } else {
+                alert("Please enter both username and password.");
+            }
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const newUsername = document.getElementById('newUsername').value;
+            const newPassword = document.getElementById('newPassword').value;
+
+            // Here, you would typically send this data to your server
+            alert(`Account created for ${newUsername}!`);
+        });
+
+        document.getElementById('showSignup').addEventListener('click', function() {
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('signupSection').style.display = 'block';
+        });
+
+        document.getElementById('showLogin').addEventListener('click', function() {
+            document.getElementById('signupSection').style.display = 'none';
+            document.getElementById('loginSection').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

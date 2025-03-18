@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link rel="stylesheet" href="styleindex.css">
+    
+</head>
+<body>
+    <nav>
+        <ul>
+            <div class="navbar">
+                <a href="home.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="service.html">Services</a>
+                <a href="result.html">Result</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="contact.html">Contact</a>
+                <a href="index.html">LogOut</a>
+        </ul>
+    </nav>
+
+    <div class="container" id="content">
+        <!-- Upload Document & Signature Page -->
+        <div id="upload" class="page active">
+            <h2>Upload Document & Signature</h2>
+            <form id="uploadForm">
+                
+                <label for="signature">Upload Signature:</label>
+                <input type="file" id="signature" required>
+                <br>
+                <button type="button" onclick="nextPage('original')">Next</button>
+            </form>
+        </div>
+
+        <!-- Upload Original Document Page -->
+        <div id="original" class="page">
+            <h2>Upload Original Document</h2>
+            <form id="originalForm">
+                <label for="originalDocument">Upload Original Document:</label>
+                <input type="file" id="originalSignature" required>
+                <br>
+                <button type="button" onclick="nextPage('result')">Next</button>
+            </form>
+        </div>
+
+        <!-- Result Page -->
+        <div id="result" class="page">
+            <h2>Submission Result</h2>
+            <p>Your documents have been successfully uploaded!</p>
+            
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function nextPage(nextPageId) {
+            const activePage = document.querySelector('.page.active');
+            // Optionally, validate the form before moving to the next page
+            if (activePage.querySelector('form').checkValidity()) {
+                showPage(nextPageId);
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        }
+    </script>
+</body>
+</html>

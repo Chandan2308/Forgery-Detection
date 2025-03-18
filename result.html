@@ -1,0 +1,49 @@
+<!-- result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Page</title>
+    <link rel="stylesheet" href="styleresult.css">
+    <style>
+       
+    </style>
+</head>
+<body>
+    
+    <div class="navbar">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="service.html">Services</a>
+        <a href="result.html">Result</a>
+        
+        <a href="feedback.html">Feedback</a>
+        <a href="contact.html">Contact</a>
+        <a href="index.html">LogOut</a>
+    </div>
+    <div class="container">
+        <h1>Results</h1>
+        <div class="result-box">
+            <h2>Document Comparison Result:</h2>
+            <p id="comparisonResult"></p>
+        </div>
+
+        <button type="Done">Done</button>
+    </div>
+
+    <script>
+        // Get the comparison result from local storage
+        const result = localStorage.getItem("comparisonResult");
+        const comparisonResultElement = document.getElementById("comparisonResult");
+
+        // Check if result exists and display appropriate message
+        if (result) {
+            comparisonResultElement.textContent = result === "Original" ? "The document is Original." : "The document is Fake.";
+        } else {
+            comparisonResultElement.textContent = "No documents were uploaded or compared.";
+        }
+    </script>
+
+</body>
+</html>
